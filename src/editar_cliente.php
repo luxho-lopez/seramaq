@@ -9,7 +9,7 @@ if (empty($existe) && $id_user != 1) {
 }
 if (!empty($_POST)) {
     $alert = "";
-    if (empty($_POST['contrato']) || empty($_POST['nombre']) || empty($_POST['planta']) || empty($_POST['telefono']) || empty($_POST['direccion'])) {
+    if (empty($_POST['contrato']) || empty($_POST['nombre']) || empty($_POST['planta']) || empty($_POST['telefono']) || empty($_POST['direccion']) || empty($_POST['nom_folio'])) {
         $alert = '<div class="alert alert-danger" role="alert">Todo los campos son requeridos</div>';
     } else {
         $idcliente = $_POST['id'];
@@ -18,7 +18,8 @@ if (!empty($_POST)) {
         $planta = $_POST['planta'];
         $telefono = $_POST['telefono'];
         $direccion = $_POST['direccion'];
-            $sql_update = mysqli_query($conexion, "UPDATE cliente SET contrato = '$contrato' , nombre = '$nombre' , planta = '$planta' , telefono = '$telefono', direccion = '$direccion' WHERE idcliente = $idcliente");
+        $nom_folio = $_POST['nom_folio'];
+            $sql_update = mysqli_query($conexion, "UPDATE cliente SET contrato = '$contrato' , nombre = '$nombre' , planta = '$planta' , telefono = '$telefono', direccion = '$direccion', nom_folio = '$nom_folio' WHERE idcliente = $idcliente");
 
             if ($sql_update) {
                 $alert = '<div class="alert alert-success" role="alert">Cliente Actualizado correctamente</div>';
@@ -45,6 +46,7 @@ if ($result_sql == 0) {
         $planta = $data['planta'];
         $telefono = $data['telefono'];
         $direccion = $data['direccion'];
+        $nom_folio = $data['nom_folio'];
     }
 }
 ?>
@@ -80,6 +82,10 @@ if ($result_sql == 0) {
                         <div class="form-group">
                             <label for="direccion">Dirección</label>
                             <input type="text" placeholder="Ingrese Direccion" name="direccion" class="form-control" id="direccion" value="<?php echo $direccion; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="nom_folio">Nomenclatura de Folio</label>
+                            <input type="text" placeholder="Ingrese 3 letras" name="nom_folio" class="form-control" id="nom_folio" value="<?php echo $nom_folio; ?>">
                         </div>
                         <button type="submit" class="btn btn-primary"><i class="fas fa-user-edit"></i> Editar Cliente</button>
                         <a href="clientes.php" class="btn btn-danger">Atras</a>

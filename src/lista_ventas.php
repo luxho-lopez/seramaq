@@ -8,14 +8,14 @@ $existe = mysqli_fetch_all($sql);
 if (empty($existe) && $id_user != 1) {
     header("Location: permisos.php");
 }
-$query = mysqli_query($conexion, "SELECT v.*, c.idcliente, c.nombre, ROW_NUMBER() OVER() AS 'row_number' FROM ventas v INNER JOIN cliente c ON v.id_cliente = c.idcliente ORDER BY v.id DESC");
+$query = mysqli_query($conexion, "SELECT v.*, c.idcliente, c.nombre, c.nom_folio, ROW_NUMBER() OVER() AS 'row_number' FROM ventas v INNER JOIN cliente c ON v.id_cliente = c.idcliente ORDER BY v.id DESC");
 ?>
 <table class="table table-light" id="tbl">
     <thead class="thead-dark">
         <tr>
             <th>#</th>
             <th>Cliente</th>
-            <!-- <th>Total</th> -->
+            <th>Folio</th>
             <th>Fecha</th>
             <th></th>
         </tr>
@@ -25,10 +25,11 @@ $query = mysqli_query($conexion, "SELECT v.*, c.idcliente, c.nombre, ROW_NUMBER(
             <tr>
                 <td><?php echo $row['row_number']; ?></td>
                 <td><?php echo $row['nombre']; ?></td>
-                <!-- <td><?php echo $row['total']; ?></td> -->
+                <td><?php echo $row['nom_folio']; ?> - <?php echo $row['folio_venta']; ?></td>
                 <td><?php echo $row['fecha']; ?></td>
                 <td>
-                    <a href="pdf/generar.php?cl=<?php echo $row['id_cliente'] ?>&v=<?php echo $row['id'] ?>" target="_blank" class="btn btn-danger"><i class="fas fa-file-pdf"></i></a>
+                    <a href="editar_folio.php?id=<?php echo $row['id']; ?>" class="btn btn-success btn-sm"><i class='fas fa-edit'></i></a>
+                    <a href="pdf/generar.php?cl=<?php echo $row['id_cliente'] ?>&v=<?php echo $row['id'] ?>" target="_blank" class="btn btn-danger btn-sm"><i class="fas fa-file-pdf"></i></a>
                 </td>
             </tr>
         <?php } ?>

@@ -19,6 +19,7 @@ if (!empty($_POST)) {
         $planta = $_POST['planta'];
         $telefono = $_POST['telefono'];
         $direccion = $_POST['direccion'];
+        $nom_folio = $_POST['nom_folio'];
         $usuario_id = $_SESSION['idUser'];
 
         $result = 0;
@@ -29,7 +30,7 @@ if (!empty($_POST)) {
                                     El cliente ya existe
                                 </div>';
         } else {
-            $query_insert = mysqli_query($conexion, "INSERT INTO cliente(contrato,nombre,planta,telefono,direccion, usuario_id) values ('$contrato', '$nombre', '$planta', '$telefono', '$direccion', '$usuario_id')");
+            $query_insert = mysqli_query($conexion, "INSERT INTO cliente(contrato,nombre,planta,telefono,direccion,nom_folio, usuario_id) values ('$contrato', '$nombre', '$planta', '$telefono', '$direccion', '$nom_folio', '$usuario_id')");
             if ($query_insert) {
                 $alert = '<div class="alert alert-success" role="alert">
                                     Cliente registrado
@@ -130,6 +131,10 @@ if (!empty($_POST)) {
                     <div class="form-group">
                         <label for="direccion">Dirección</label>
                         <input type="text" placeholder="Ingrese Direccion" name="direccion" id="direccion" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="nom_folio">Nomenclatura de folio</label>
+                        <input type="text" placeholder="Ingrese 3 Letras" name="nom_folio" id="nom_folio" class="form-control">
                     </div>
                     <input type="submit" value="Guardar Cliente" class="btn btn-primary">
                 </form>

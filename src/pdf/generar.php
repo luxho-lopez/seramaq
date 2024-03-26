@@ -65,7 +65,7 @@ class PDF extends FPDF
         // Arial bold 8
         $this->SetFont('Arial', 'B', 8);
         $this->SetTextColor(255, 0, 0);
-        $this->Cell(30, 8, '', 1, 0, 'C');
+        $this->Cell(30, 8, " " . $datosC['nom_folio'] . " - " . $datos_venta['folio_venta'] . " ", 1, 0, 'C');
         // Salto de línea
         $this->Ln(5);
 
@@ -99,6 +99,7 @@ class PDF extends FPDF
 
         // PROYECTO
         $this->Cell(1);
+
         $this->SetFont('Arial', 'B', 8);
         $this->SetDrawColor(59, 78, 136);
         $this->SetFillColor(255, 255, 255);
@@ -151,7 +152,7 @@ class PDF extends FPDF
         global $datos_venta;
         // Posición: a 1,5 cm del final
         $this->SetY(-45);
-        
+
         // Para los datos y firmas
         $this->Cell(1);
         // Tabla de datos
@@ -163,7 +164,7 @@ class PDF extends FPDF
         $this->Cell(94, 6, '                    R E C E P T O R', 0, 0, 'L', 1);
         // Salto de línea
         $this->Ln(6);
-        
+
         $this->Cell(1);
         $this->SetFont('Arial', 'B', 8);
         // $this->SetDrawColor(59, 78, 136);
