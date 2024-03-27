@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2024 at 06:49 PM
+-- Generation Time: Mar 27, 2024 at 03:33 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -76,9 +76,10 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`idcliente`, `contrato`, `nombre`, `planta`, `telefono`, `direccion`, `nom_folio`, `at_date`, `usuario_id`, `estado`) VALUES
-(1, '1', 'SERAMAQ, S.A. DE C.V.', 'VILLAHERMOSA', '9931259891', 'VILLAHERMOSA, TABASCO.', 'SER-', '2024-03-23', 1, 1),
-(2, 'CFE-0600-CSCON-0012-2024', 'MANTENIMIENTO ANUAL CIVIL DE UNIDAD NUMERO 1 Y OTRAS ÁREAS (2024)', 'CENTRAL TERMOELÉCTRICA JOSÉ ACEVES POZOS', '', 'MAZATLAN, SINALOA.', 'MAZ-', '2024-03-23', 1, 1),
-(3, '5200010858', 'REHABILITACIÓN Y ELIMINACIÓN DE FILTRACIONES EN TORRE DE ENFRIAMIENTO CT401', 'COMPLEJO PROCESADOR DE GAS LA VENTA', '1234567890', 'VILLAHERMOSA, TABASCO.', '', '2024-03-26', 1, 1);
+(1, '1', 'SERAMAQ, S.A. DE C.V.', 'VILLAHERMOSA', '9931259891', 'VILLAHERMOSA, TABASCO.', 'SER', '2024-03-23', 1, 1),
+(2, 'CFE-0600-CSCON-0012-2024', 'MANTENIMIENTO ANUAL CIVIL DE UNIDAD NUMERO 1 Y OTRAS ÁREAS (2024)', 'CENTRAL TERMOELÉCTRICA JOSÉ ACEVES POZOS', '', 'MAZATLAN, SINALOA.', 'MAZ', '2024-03-23', 1, 1),
+(3, '5200010858', 'REHABILITACIÓN Y ELIMINACIÓN DE FILTRACIONES EN TORRE DE ENFRIAMIENTO CT401', 'COMPLEJO PROCESADOR DE GAS LA VENTA', '1234567890', 'VILLAHERMOSA, TABASCO.', 'VEN', '2024-03-26', 1, 1),
+(4, '5200010917', 'REABILITACIÓN DE MEDIAS CAÑAS DE LOS RACK DE INTEGRACIÓN Y PLANTAS DEL PROCESO DEL COMPLEJO PROCESADOR DE GAS CACTUS', 'COMPLEJO PETROQUIMICO CACTUS', '1234567890', 'REFORMA, CHIAPAS.', 'CAC', '2024-03-26', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -273,6 +274,7 @@ CREATE TABLE `ventas` (
   `id_cliente` int(11) NOT NULL,
   `total` decimal(10,2) NOT NULL,
   `id_usuario` int(11) NOT NULL,
+  `folio_venta` varchar(11) NOT NULL,
   `fecha` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -372,7 +374,7 @@ ALTER TABLE `clasificacion`
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `configuracion`
@@ -390,7 +392,7 @@ ALTER TABLE `detalle_permisos`
 -- AUTO_INCREMENT for table `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `detalle_venta`
